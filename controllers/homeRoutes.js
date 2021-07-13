@@ -7,17 +7,17 @@ if (req.session.logged_in){
   res.redirect('/api/users/homepage')
 return
 }
-res.render('signup')
+res.render('login')
 });
 
-router.get('/login', (req, res) => {
+router.get('/signup', (req, res) => {
   // If a session exists, redirect the request to the homepage
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/api/users/homepage');
     return;
   }
 
-  res.render('login');
+  res.render('signup');
 });
 
 module.exports = router;

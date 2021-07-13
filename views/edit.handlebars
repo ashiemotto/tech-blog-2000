@@ -1,0 +1,30 @@
+  <div class="home-title">
+        <h3>Edit Post</h3>
+    </div>
+    <div class="edit-post-container">
+      <form class="form edit-post">
+        <div class="form-group">
+          <label for="title" class="text-light">Title</label>
+          <input class="form-input" type="text" id="post-title" placeholder="{{post.title}}" autocomplete="off"/>
+        </div>
+        <div class="form-group">
+          <label for="post-content" class="text-light">Content</label>
+          <textarea id="post-content" class="form-input content-input" rows="3" cols="25" placeholder="Write about something!">{{post.content}}</textarea>
+        </div>
+        <div class="edit-info">
+            <p class="text-light">created by you on {{format_date post.created_at}}</p>
+            <a href="api/users/post/{{post.id}}" class="text-light">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-info btn-block edit-post-form" type="submit">Post</button>
+          <button class="btn btn-danger btn-block delete-post-button" type="submit">Delete post</button>
+        </div>
+      </form>
+    </div>
+    
+
+    <script src="/public/js/delete.js"></script>
+    <script src="/public/js/edit.js"></script>
+    <script src="/public/js/comment.js"></script>
+    <script src="/public/js/logout.js"></script>
+    <script src="/public/js/dash.js"></script>

@@ -1,0 +1,15 @@
+  <div class="home-title">
+        <h3><i class="fa fa-columns"></i> Dashboard</h3>
+    </div>
+    <div class="post-container">
+        {{#if posts.length}}
+            {{#each posts as |post|}}
+                {{> post-details post}}
+                <a class="edit-a"href="/api/users/edit/{{post.id}}"><button class="edit-button">Edit</button></a>
+            {{/each}}
+        {{else}}
+        <h6>You do not currently have any posts...</h6>
+        {{/if}}
+    </div>
+    <script src="/public/js/logout.js"></script>
+    <script src="/public/js/dash.js"></script>

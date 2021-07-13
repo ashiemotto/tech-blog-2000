@@ -1,0 +1,18 @@
+ <div class="post-container">
+        {{> post-details post}} 
+    </div>
+    <div class="previous-comments">
+        <h4>Comments</h4>
+        {{> comments post.comments}}
+    </div>
+    <form class="comment-form">
+        <h3><i class="fa fa-comment"></i> Add a comment</h3>
+        <div class="form-group">
+          <input class="form-input" type="text" id="comment-body" placeholder="Say something!" autocomplete="off"/>
+          <button class="btn btn-dark" type="submit"><i class="fa fa-share"></i> Add Comment</button>
+        </div>
+    </form>
+
+    <script src="/public/js/logout.js"></script>
+    <script src="/public/js/dash.js"></script>
+    <script src="/public/js/comment.js"></script>

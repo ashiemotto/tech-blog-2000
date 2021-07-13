@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User,Post,Comments } = require('../../models');
 
 
 
 
 
 // localhost:3001/api/users/homepage
-router.get('homepage',(req,res) =>{
+router.get('/homepage',(req,res) =>{
   Post.findAll({
     attributes: [
       'id',
@@ -16,16 +16,16 @@ router.get('homepage',(req,res) =>{
     ],
     include: [
       {
-        model: Comment,
+        model: Comments,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['name']
         }
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['name']
       }
     ]
   }).then(dbPostData => {
@@ -55,16 +55,16 @@ router.get('/dashboard', (req, res) => {
     ],
     include: [
       {
-        model: Comment,
+        model: Comments,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['name']
         }
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['name']
       }
     ]
   })
@@ -96,12 +96,12 @@ router.get('/post/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['name']
         }
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['name']
       }
     ]
   })
@@ -142,12 +142,12 @@ router.get('/edit/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['name']
         }
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['name']
       }
     ]
   })
@@ -185,12 +185,12 @@ router.get('/create/', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['name']
         }
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['name']
       }
     ]
   })
@@ -255,13 +255,13 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   User.create({
-    username: req.body.username,
+    name: req.body.name,
     email: req.body.email,
     password: req.body.password,
   }).then(dbUserData => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
+      req.session.name = dbUserData.name;
       req.session.loggedIn = true;
       res.json(dbUserData);
     });
