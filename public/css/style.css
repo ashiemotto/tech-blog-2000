@@ -346,9 +346,6 @@ header ul li button:hover {
   border: 1px solid #1f1f1f;
 }
 
-.previous-comments h4, .comment-form h3 {
-  font-family: var(--title);
-}
 
 .post-date{
   float: right;
