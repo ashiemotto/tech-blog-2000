@@ -1,0 +1,557 @@
+:root {
+  --card-head: #222222;
+  --font-white: #cecece;
+  --tertiary: #5e877f;
+  --posts_bg: #cecece;
+  --logo: 'Monoton', cursive;
+  --title: 'Major Mono Display', monospace;
+  --general: 'Cairo', sans-serif;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+  background-color: var(--quatrinary);
+}
+
+a {
+  color: #182c23;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex-wrap:nowrap;
+  flex-grow: 1;
+}
+
+.post-container {
+  display:block;
+  background-color: #303030;
+  border-bottom: 1px solid #242424;
+  border-top: 1px solid #242424;
+}
+
+.edit-post-container {
+  display:block;
+  background-color: #303030;
+  padding: 2%;
+}
+
+.edit-post-container * {
+  font-family: var(--general);
+}
+
+
+
+.form-group .edit-post-form, .form-group .delete-post-form {
+  margin: 1% auto;
+}
+
+.edit-info * {
+  color: #181818;
+}
+
+.edit-button {
+  padding: 1% 22%;
+  position: relative;
+  margin:-5% 24% 1% 24%;
+  
+  border: none;
+  font-family: var(--general);
+  box-shadow: 2px 2px 8px #1d1d1d;
+}
+
+.edit-button:hover {
+  background-color: #303030;
+  color: #f6f5f5;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  transition: all ease 0.5s;
+  border: 1px solid rgb(133, 133, 133);
+}
+
+.hp-logo {
+    margin: auto auto;
+    color: black;
+    flex: 0 0 30%;
+    white-space: nowrap;
+}
+
+.hp-logo a:hover {
+  text-decoration: none;
+}
+
+.logo {
+  font-family: var(--logo);
+  font-size: 82px;
+  color: #0026ff;
+  text-shadow: 6px 6px 6px rgb(0, 0, 0);
+  -webkit-text-stroke: 0.5px black;
+}
+
+.hp-logo li {
+  font-size: 36px;
+  list-style-type:none;
+  color: #cad2fd;
+  font-weight: bolder;
+  text-shadow: 3px 3px 3px #212121;
+  line-height: 50px;
+  font-family: var(--general);
+  line-height: 2;
+  margin-left: -40px;
+}
+
+.login-card1 {
+  padding: 20px;
+  height: 500px;
+  background-color: #ffffff;
+  margin: auto;
+  box-shadow: 2px 2px 6px #000000;
+  flex: 0 0 30%;
+  border-radius: 5px;
+}
+
+.login-card2 {
+  padding: 20px;
+  height: 360px;
+  background-color: #ffffff;
+  margin: auto;
+  color: var(--light);
+  box-shadow: 2px 2px 6px #000000;
+  flex: 0 0 30%;
+  border-radius: 5px;
+}
+
+.logIn {
+  color:#000000;
+  position: absolute;
+}
+
+.hp-display {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: auto;
+}
+
+.log-in-display {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.btn-no-style {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 100%;
+  transition: color 0.1s;
+  margin-left: 16px;
+}
+
+.home-title {
+  background-color:#1f1f1f;
+  padding: 0 20px;
+}
+
+.home-title * {
+  color: var(--font-white);
+  font-weight: 300;
+  font-family: var(--title);
+}
+
+.home-title h3 {
+  font-size: 20px;
+  color:#ffffff
+}
+
+.leadTime {
+  float: right;
+  font-size: 18px;
+}
+
+#text {
+  font-size: 20px;
+  color: #802121;
+}
+
+.user {
+  float: right;
+}
+
+header {
+  padding: 15px 20px 10px 20px;
+
+  color: var(--light);
+  border-bottom: 1px solid black;
+  z-index: 1;
+}
+
+header .logIn{
+  font-size: 50px;
+}
+header h1 {
+  float: left;
+  color: #000000;
+}
+
+header ul {
+  display:flex;
+  float: right;
+}
+
+header ul li {
+  padding: 10px;
+  list-style-type: none;
+}
+
+header ul li button {
+  font-family: var(--general);
+}
+
+header ul li button:hover {
+  text-decoration: underline;
+}
+
+
+
+.card {
+  margin: 20px;
+  flex: 0 1 300px;
+  border: 1px solid #1a1a1a;
+  border-radius: 5px;
+  background-color: white;
+  padding: 2%;
+  box-shadow: 2px 2px 8px #292929;
+}
+
+.card-head {
+  padding: 15px 20px 10px 20px;
+  background-color: var(--card-head);
+  z-index: 1;
+  box-shadow: 2px 2px 4px #292929;
+}
+
+.card-head .title {
+  display: inline;
+  font-size: 22px;
+  font-family: var(--general);
+  color: var(--font-white);
+}
+
+.card-head .author {
+  float: right;
+  font-family: var(--general);
+  color: var(--font-white);
+}
+
+.card-head .author span {
+  font-weight: 500;
+}
+
+.card-body {
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.card-body .content {
+  text-align: left;
+  margin: 20px;
+  font-family: var(--general);
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+
+.comments section {
+  background-color: #616161;
+  margin-bottom: 10px;
+}
+
+.comment-amount {
+  color: #1a1a1a;
+}
+
+.comment-amount:hover {
+  color: #808080;
+}
+
+.comment-form {
+  border-top: 2px dashed #1d1d1d;
+  background-color: #3a3a3a;
+}
+
+.comment-form * {
+  font-family: var(--general);
+}
+
+.comment-form .form-group {
+  padding-left: 2%;
+}
+
+#comment-body {
+  width: 50%;
+  background-color: #c2c2c2;
+}
+
+.comment-form h3 {
+  padding: 2%;
+}
+
+.comments *{
+  font-family: var(--general);
+}
+
+.comment .text {
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: #000;
+}
+
+.meta {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #bdbdbd;
+  background-color: #303030;
+  border: 1px solid rgb(36, 36, 36);
+  box-shadow: 2px 2px 6px #2c2c2c;
+}
+
+.meta span {
+  float: right;
+  padding-right: 2%;
+}
+
+.previous-comments {
+  background-color: #414141;
+  padding: 1% 2%;
+  margin: 1% 2%;
+  border: 1px solid #1f1f1f;
+}
+
+.previous-comments h4, .comment-form h3 {
+  font-family: var(--title);
+}
+
+.post-date{
+  float: right;
+}
+
+.a-social-icons {
+  position: fixed;
+  top: 85%;
+  right: 5%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.a-social-icons button{
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 50px;
+  background-color: black;
+  color:white;
+  border: 1px solid #303030;
+  border-radius: 8px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  font-family: var(--general);
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+}
+
+.modal-content {
+  background-color: gray;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid rgb(0, 0, 0);
+  width: 80%;
+}
+
+.modal-content * {
+  font-family: var(--general);
+}
+
+/* .create-post .form-group input, .create-post .form-group textarea{
+  background-color: #c2c2c2;
+} */
+
+.close {
+ 
+  float: right;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+
+.content-input {
+  resize:vertical
+}
+
+footer {
+  padding: 3%;
+  background-color: #3c3c3c;
+}
+
+footer p{
+  font-size: 24px;
+}
+
+footer * {
+  font-family: var(--general);
+  color: #000000;
+}
+
+@keyframes connect {
+  0%   {background: url(./images/1.jpg)no-repeat center center/cover;;}
+  25%  {background: url(./images/2.jpg)no-repeat center center/cover;;}
+  40%  {background: url(./images/3.jpg)no-repeat center center/cover;;}
+  55%  {background: url(./images/4.jpg)no-repeat center center/cover;;}
+  70% {background: url(./images/5.jpg)no-repeat center center/cover;;}
+  85% {background: url(./images/6.jpg)no-repeat center center/cover;;}
+  100% {background: url(./images/7.jpg)no-repeat center center/cover;;}
+}
+
+@media only screen and (max-width: 1075px) {
+ 
+
+  .logo {
+    font-size: 62px;
+  }
+
+  .hp-logo {
+    position: relative;
+    top: -30%;
+    white-space:normal
+  }
+
+  .hp-logo li {
+    display: none;
+  }
+
+  .login-card1 {
+    position: absolute;
+    top: 35%;
+    left: 28%;
+    height: 520px;
+  }
+
+  .login-card2 {
+    position: absolute;
+    top: 35%;
+    left: 28%;
+    height: 380px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .a-social-icons {
+    top: 90%;
+    right: -3%;
+  }
+
+  .a-social-icons button{
+    width: 110%;
+  }
+
+  .card-head .author {
+    float:none;
+    display: block;
+    border-top: 1px dashed #3f3f3f;
+    padding-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .login-card1 {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    height: 540px;
+  }
+
+  .login-card2 {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    height: 380px;
+  }
+
+  .hp-logo {
+    position: absolute;
+    top: 5%;
+    left: 4%;
+    white-space:normal
+  }
+
+  header ul {
+    display:flex;
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .meta span {
+    float:none;
+    padding-left: 5px;
+  }
+}
+
+@media only screen and (max-height: 800px) and (max-width: 1075px){
+  .hp-display {
+    animation: none;
+  }
+}
+
+
+@media only screen and (max-height: 800px) {
+  .login-card1 {
+    height: 460px;
+  }
+
+  .login-card1 h1 {
+    font-size: 20px;
+  }
+
+  .login-card1 h3 {
+    font-size: 16px;
+  }
+
+  .login-card1 label {
+    font-size: 14px;
+  }
+
+  .login-card1 input {
+    padding: 0.5rem;
+  }
+}

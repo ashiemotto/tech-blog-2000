@@ -1,22 +1,28 @@
+<main>
+    <div class="hp-display">
+        <div class="login-card1">
+            <h1 class="page-title text-dark">Sign-up!</h1>
+            <h3 class="text-dark">Create an account</h3>
+            <form class="form signup-form">
+                <div class="form-group">
+                <label for="username-signup" class="text-dark">Username:</label>
+                <input class="form-input" type="text" id="username-signup" autocomplete="off"/>
+                </div>
+                <div class="form-group">
+                <label for="email-signup" class="text-dark">Email:</label>
+                <input class="form-input" type="text" id="email-signup" autocomplete="off"/>
+                </div>
+                <div class="form-group">
+                <label for="password-signup" class="text-dark">Password:</label>
+                <input class="form-input" type="password" id="password-signup" autocomplete="off"/>
+                </div>
+                <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Sign-up</button>
+                </div>
+            </form>
+            <p class="pt-2 logIn">Already have an account? <span> Try <a href="/">logging in.</a></span></p>
+        </div>
+    </div>
+</main>
 
-{{!-- sign up page  --}}
-
-
-<form id="signUpForm">
-   <div class="mb-3">
-    <label for="exampleInputName1" class="form-label">Name</label>
-    <input type="text" class="form-control" id="nameSignup" aria-describedby="nameHelp" placeholder="Please enter name">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="emailSignup" aria-describedby="emailHelp" placeholder="Please enter email">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="passwordSignup" placeholder="Please enter password">
-  </div>
-  <button type='submit' class="btn btn-primary" id="signUp">Submit</button>
-</form>
-
-<script src="../public/js/signup.js"
+<script src="./js/signup.js"></script>

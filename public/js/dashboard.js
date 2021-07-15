@@ -1,4 +1,3 @@
-  
 const homeNavigator = async () => {
     await fetch('/api/users/home').then(
         document.location.replace('/api/users/home')

@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { User,Post,Comments } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 
+////////////////////////////////////////GET/////////////////////////////////////////////
 
-
-
-// localhost:3001/api/users/homepage
-router.get('/homepage',(req,res) =>{
+router.get('/home', (req, res) => {
+  console.log(req.session);
+  // console.log(req.session.username);
   Post.findAll({
     attributes: [
       'id',
@@ -16,16 +16,16 @@ router.get('/homepage',(req,res) =>{
     ],
     include: [
       {
-        model: Comments,
+        model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['name']
+          attributes: ['username']
         }
       },
       {
         model: User,
-        attributes: ['name']
+        attributes: ['username']
       }
     ]
   }).then(dbPostData => {
@@ -40,7 +40,7 @@ router.get('/homepage',(req,res) =>{
   });
 });
 
-// localhost:3001/api/dashboard
+/////////////////////////////
 
 router.get('/dashboard', (req, res) => {
   Post.findAll({
@@ -55,16 +55,16 @@ router.get('/dashboard', (req, res) => {
     ],
     include: [
       {
-        model: Comments,
+        model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['name']
+          attributes: ['username']
         }
       },
       {
         model: User,
-        attributes: ['name']
+        attributes: ['username']
       }
     ]
   })
@@ -78,7 +78,8 @@ router.get('/dashboard', (req, res) => {
     });
 });
 
-//localhost:3001/api/users/post
+/////////////////////////////
+
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -96,12 +97,12 @@ router.get('/post/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['name']
+          attributes: ['username']
         }
       },
       {
         model: User,
-        attributes: ['name']
+        attributes: ['username']
       }
     ]
   })
@@ -122,10 +123,9 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
+/////////////////////////////
 
-// edit post
-
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id',  (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id
@@ -142,12 +142,12 @@ router.get('/edit/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['name']
+          attributes: ['username']
         }
       },
       {
         model: User,
-        attributes: ['name']
+        attributes: ['username']
       }
     ]
   })
@@ -168,6 +168,8 @@ router.get('/edit/:id', (req, res) => {
   });
 });
 
+/////////////////////////////
+
 router.get('/create/', (req, res) => {
   Post.findAll({
     where: {
@@ -185,12 +187,12 @@ router.get('/create/', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['name']
+          attributes: ['username']
         }
       },
       {
         model: User,
-        attributes: ['name']
+        attributes: ['username']
       }
     ]
   })
@@ -204,6 +206,7 @@ router.get('/create/', (req, res) => {
     });
 });
 
+/////////////////////////////
 
 router.get('/', (req, res) => {
   User.findAll({
@@ -216,7 +219,7 @@ router.get('/', (req, res) => {
     });
 });
 
-
+/////////////////////////////
 
 router.get('/:id', (req, res) => {
   User.findOne({
@@ -252,21 +255,66 @@ router.get('/:id', (req, res) => {
     });
 });
 
+////////////////////////////////////////POST/////////////////////////////////////////////
 
 router.post('/', (req, res) => {
   User.create({
-    name: req.body.name,
+    username: req.body.username,
     email: req.body.email,
     password: req.body.password,
   }).then(dbUserData => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
-      req.session.name = dbUserData.name;
+      req.session.username = dbUserData.username;
       req.session.loggedIn = true;
       res.json(dbUserData);
     });
   });
 });
+
+/////////////////////////////
+
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email,
+    },
+  }).then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: 'No user with that email address!' });
+      return;
+    }
+    const validPassword = dbUserData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password!' });
+      return;
+    }
+    // console.log("SESSION SAVED")
+    req.session.save((err) => {
+      if (!err) {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+      }
+    });
+    console.log(req.session);
+  });
+});
+
+/////////////////////////////
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+////////////////////////////////////////PUT/////////////////////////////////////////////
 
 router.put('/:id', (req, res) => {
   User.update(req.body, {
@@ -288,7 +336,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// delete post
+////////////////////////////////////////DELETE/////////////////////////////////////////////
 
 router.delete('/:id', (req, res) => {
   User.destroy({
@@ -310,54 +358,5 @@ router.delete('/:id', (req, res) => {
 });
 
 
-
-
-
-
-router.post('/login', async (req, res) => {
-  try {
-    // Find the user who matches the posted e-mail address
-    const userData = await User.findOne({ where: { email: req.body.email } });
-
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    // Verify the posted password with the password store in the database
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    // Create session variables based on the logged in user
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
-
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    // Remove the session variables
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
-});
 
 module.exports = router;

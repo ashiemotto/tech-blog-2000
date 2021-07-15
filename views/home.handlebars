@@ -1,0 +1,47 @@
+    <header>
+        <h1>Techblog 2000</h1>
+        <ul>
+            <li><button id="home" class="btn-no-style">Home</button></li>
+            <li><button id="dashboard" class="btn-no-style">Dashboard</button></li>
+            <li><button id="logout" class="btn-no-style">Logout</button></li>
+        </ul>
+    </header>
+    <div class="home-title">
+        <h3><i class="fa fa-home"></i> Home<span id="currentDay" class="leadTime"></span></h3>
+    </div>
+    <div class="post-container">
+        {{#each posts as |post|}}
+        {{> post-details}}
+        {{/each}}   
+    </div>
+    <div class="a-social-icons">
+        <button id="myBtn">New Post</button>
+    </div>
+    <!-- modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+            <h1 class="page-title text-dark">Create a post</h1>
+            <form class="form create-post">
+              <div class="form-group">
+                <label for="title" class="text-dark">Title</label>
+                <input class="form-input" type="text" id="post-title" autocomplete="off"/>
+              </div>
+              <div class="form-group">
+                <label for="post-content" class="text-dark">Content</label>
+                <textarea id="post-content" class="form-input content-input" rows="3" cols="25" placeholder="Write about something!"></textarea>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-dark btn-block" type="submit">Post</button>
+              </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/create-post.js"></script>
+    <script src="/js/logout.js"></script>
+</body>
+</html>
