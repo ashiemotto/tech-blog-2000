@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-////////////////////////////////////////GET/////////////////////////////////////////////
+// get login page
 
 router.get('/', (req, res) => {
   if (req.session.loggedIn) {
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   res.render('login')
 });
 
-/////////////////////////////
+//get signup
 
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {

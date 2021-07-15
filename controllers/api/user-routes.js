@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 
 
-////////////////////////////////////////GET/////////////////////////////////////////////
+// get hompage
 
 router.get('/home', (req, res) => {
   console.log(req.session);
@@ -40,7 +40,7 @@ router.get('/home', (req, res) => {
   });
 });
 
-/////////////////////////////
+
 
 router.get('/dashboard', (req, res) => {
   Post.findAll({
@@ -78,7 +78,7 @@ router.get('/dashboard', (req, res) => {
     });
 });
 
-/////////////////////////////
+
 
 router.get('/post/:id', (req, res) => {
   Post.findOne({
@@ -123,7 +123,7 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
-/////////////////////////////
+
 
 router.get('/edit/:id',  (req, res) => {
   Post.findOne({
@@ -168,7 +168,7 @@ router.get('/edit/:id',  (req, res) => {
   });
 });
 
-/////////////////////////////
+
 
 router.get('/create/', (req, res) => {
   Post.findAll({
@@ -206,7 +206,7 @@ router.get('/create/', (req, res) => {
     });
 });
 
-/////////////////////////////
+
 
 router.get('/', (req, res) => {
   User.findAll({
@@ -219,7 +219,7 @@ router.get('/', (req, res) => {
     });
 });
 
-/////////////////////////////
+
 
 router.get('/:id', (req, res) => {
   User.findOne({
@@ -255,7 +255,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-////////////////////////////////////////POST/////////////////////////////////////////////
+
 
 router.post('/', (req, res) => {
   User.create({
@@ -272,7 +272,7 @@ router.post('/', (req, res) => {
   });
 });
 
-/////////////////////////////
+
 
 router.post('/login', (req, res) => {
   User.findOne({
@@ -289,7 +289,7 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
-    // console.log("SESSION SAVED")
+    
     req.session.save((err) => {
       if (!err) {
       req.session.user_id = dbUserData.id;
@@ -302,7 +302,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-/////////////////////////////
+
 
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
@@ -314,7 +314,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-////////////////////////////////////////PUT/////////////////////////////////////////////
+
 
 router.put('/:id', (req, res) => {
   User.update(req.body, {
@@ -336,7 +336,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-////////////////////////////////////////DELETE/////////////////////////////////////////////
+
 
 router.delete('/:id', (req, res) => {
   User.destroy({

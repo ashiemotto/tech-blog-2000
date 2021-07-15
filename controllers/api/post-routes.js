@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 
 
-////////////////////////////////////////GET/////////////////////////////////////////////
+//get posts
 
 router.get('/', (req, res) => {
   Post.findAll({
@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
   });
 });
 
-/////////////////////////////
+//get by id
 
 router.get('/:id', (req, res) => {
   Post.findOne({
@@ -76,7 +76,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-////////////////////////////////////////POST/////////////////////////////////////////////
+// post
 
 router.post('/',  (req, res) => {
   Post.create({
@@ -91,7 +91,6 @@ router.post('/',  (req, res) => {
   });
 });
 
-////////////////////////////////////////PUT/////////////////////////////////////////////
 
 router.put('/:id' , (req, res) => {
   Post.update({
@@ -116,7 +115,7 @@ router.put('/:id' , (req, res) => {
   });
 });
 
-////////////////////////////////////////DELETE/////////////////////////////////////////////
+// delete post
 
 router.delete('/:id',  async (req, res) => {
   await Comment.destroy({
