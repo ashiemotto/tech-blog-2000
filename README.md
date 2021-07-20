@@ -1,6 +1,5 @@
 # Techblog 2000
-
-  
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://tech-blog-2000.herokuapp.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/mit)
   
 ## Description
@@ -31,6 +30,7 @@ once you signup you can create edit and delete posts as well as leave comments
 ## Links
 https://ashiemotto.github.io/tech-blog-2000/
 https://github.com/ashiemotto/tech-blog-2000
+https://tech-blog-2000.herokuapp.com/
   
 ## Reporting
 ```md
