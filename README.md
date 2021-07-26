@@ -15,7 +15,7 @@ a place to post and comment on blogs
   
 ## Installation
 ```md
-first run npm i and install depenencies then run npm run start
+first run npm i and install dependencies then run npm run start
 ```
   
 ## Usage
