@@ -29,7 +29,9 @@ once you signup you can create edit and delete posts as well as leave comments
 ![picture of website](./images/post.png)
 ## Links
 https://ashiemotto.github.io/tech-blog-2000/
+
 https://github.com/ashiemotto/tech-blog-2000
+
 https://tech-blog-2000.herokuapp.com/
   
 ## Reporting
